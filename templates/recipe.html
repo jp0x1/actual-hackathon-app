@@ -5,19 +5,30 @@
 <div class="container" style="text-align:center;">
   <body>
     <div className="card"  style="background-color:rgba(185,185,185,0.9); border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 100px; padding-top:100px;padding-right: 100px; padding-bottom: 100px; margin-left: 100px; margin-top: 200px; margin-right: 100px; margin-bottom: 200px;">
-      <div>
+      <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
         <h1>
-            moneky
-            
+            {{food_name}}
         </h1>
-        {%for food in food_list%}
-           <img src="{{food[1]}}" alt="">
-           {%endfor%}
+           
       </div>
 
-        <div>
-           
-        </div>
+      <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+        <img src="{{food_image}}" alt="" style="border-radius:15px">
+      </div>
+      <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+        <h2>Ingredients</h2>
+        {{ingredients}}
+        <br>
+        <br>
+        <br>
+        <h2>Recipe</h2>
+        {% for step in recipe %}
+          {{step}}<br>
+        {%endfor%}
+        <br><br>
+        <a href="/"><button  style="font-family: Short Stack, cursive; font-weight:400; font-style: normal;background-color:rgba(83, 247, 173);border-width:0px; border-radius:15px;padding-left:20px;padding-left:20px;padding-bottom:15px;padding-top:15px;padding-right:20px;margin-left:50px"> Generate Another Recipe</button></a>
+   
+      </div>
     </div>
   </body>
 </div> 

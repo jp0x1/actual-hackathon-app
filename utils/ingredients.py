@@ -17,7 +17,6 @@ def filter_food_items(user_filter_list, food_list):
     search_food_list = []
     # gets every food item index from API food query
     for food in food_list:
-        print(food)
         # gets every filter from the inputted filters from form
         for user_filter in user_filter_list:
             # gets the filters from each specific food item
@@ -27,10 +26,10 @@ def filter_food_items(user_filter_list, food_list):
                     food['recipe']['image'],
                     food['recipe']['dietLabels'], 
                     food['recipe']['healthLabels'],
-                    "\n".join(food['recipe']['ingredientLines']),
+                    food['recipe']['ingredientLines'],
                     round(food['recipe']['calories'])])
-                break
-    
+                # print(search_food_list)
+                continue
     return search_food_list
                 
 
@@ -45,3 +44,4 @@ def process_no_filter(food_list):
                     round(food['recipe']['calories'])])
     return updated_list
 
+#CUSTOM INGREDIENTS

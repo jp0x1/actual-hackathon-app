@@ -2,95 +2,137 @@
 {%block title%}Recipe Finder{%endblock%}
 {%set active_page = 'home'%}
 {%block content%}
-<div class="container" style="text-align:center;">
+<div class="container" style="text-align:center;border-width: 3px ;border-color:rgba(83, 247, 173)">
   <body>
-    <div className="card"  style="font-family: Rubik Doodle Shadow; font-weight: 400; font-style: normal;background-color:rgba(185,185,185,0.9); border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 100px; padding-top:100px;padding-right: 100px; padding-bottom: 100px; margin-left: 50px; margin-top: 100px; margin-right: 50px; margin-bottom: 200px;font-size:100px">
+    <!-- card outside -->
+    <div className="card"  style="background-color:rgba(185,185,185,0.9); border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 100px; padding-top:50px;padding-right: 100px; padding-bottom: 100px; margin-left: 50px; margin-top: 100px; margin-right: 50px; margin-bottom: 100px">
       <div>
-        <h1 style="margin-bottom:100px">
-            Results for : {{food_name}}            
-        </h1>
+        <!-- headercard -->
+        <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+          <h1 style="font-size:80px;text-transform: capitalize">
+              Results for : {{food_name}}            
+          </h1>
+        </div>
+        
+        <a href="/"><button  style="font-family: Short Stack, cursive; font-weight:400; font-style: normal;background-color:rgba(83, 247, 173);border-width:0px; border-radius:15px;padding-left:20px;padding-left:20px;padding-bottom:15px;padding-top:15px;padding-right:20px;margin-left:50px"> Generate Another Recipe</button></a>
+
+        <!-- table -->
         <table>
-        {%for i in range(0,food_list|length,2)%}
-          <tr>
-            <td>
-              <div className="card" style="height:cover;text-align:center;margin: 0 auto;background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
-                <form action="/recipe" method="POST">
-                <img src="{{food_list[i][1]}}" alt="" style="border-radius:10px">
+        {% if food_list|length > 1%}
+        <!-- display left -->
+          {%for i in range(0,food_list|length,2)%}
+            <tr>
+              <td>
+                <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+                  
+                  <img src="{{food_list[i][1]}}" alt="" style="border-radius:10px">
 
-                <!-- label -->
-                <div style="font-size:20px;margin-top:10px">
-                  {{food_list[i][0]}} 
-                </div> 
+                  <!-- label -->
+                  <div style="font-size:20px;margin-top:10px">
+                    {{food_list[i][0]}} 
+                  </div> 
 
-                <!--ingredients  -->
-                <div style="font-size:10px;margin-top:10px">
-                <h2 style="font-size:15px">Ingredients</h2>
-                {%for ingredient in food_list[i][4]%}
-                  - {{ingredient}}
-                  <br>
-                {%endfor%}
-                </div>   
-
-                <!--filter labels  -->
-                <h2 style="font-size:15px; margin-top:10px">Labels</h2>
-                <div style="font-size:10px;margin-top:10px">
-                {%for label in food_list[i][2]%}
-                  - {{label}}
-                  <br>
-                {%endfor%}                  
-                </div>
-
-                <!-- allergy/health labels -->
-                <div style="font-size:10px;margin-top:10px">
-                {%for health in food_list[i][3]%}
-                  - {{health}}
-                  <br>
-                {%endfor%}
-                </div>
-
-                <!--calories  -->
-                <div style="font-size:10px;margin-top:10px">
-                kcal : {{food_list[i][5]}}
-                </div>
-                </form>
-            </td>
-            <td>
-            <form action="/recipe" method="POST">
-              <div className="card" style="height:cover;text-align:center;margin: 0 auto;background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
-                <img src="{{food_list[i+1][1]}}" alt="" style="border-radius:10px">
-                <!-- label -->
-                <div style="font-size:20px;margin-top:10px">
-                    {{food_list[i+1][0]}}
-                </div> 
                   <!--ingredients  -->
-                <div style="font-size:10px;margin-top:10px">
-                <!-- {{food_list[i+1][4]}} -->
-                {%for ingredient in food_list[i+1][4]%}
-                - {{ingredient}}
-                <br>
-                {%endfor%}
-                </div>    
-                <!--filter labels  -->
-                <div style="font-size:10px;margin-top:10px">
-                    {%for ingredient in food_list[i+1][2]%}
+                  <div style="font-size:10px;margin-top:10px">
+                  <h2 style="font-size:15px">Ingredients</h2>
+                  {%for ingredient in food_list[i][4]%}
                     - {{ingredient}}
                     <br>
-                    {%endfor%}                </div>
-                <!-- allergy/health labels -->
-                <div style="font-size:10px;margin-top:10px">
-                    {%for ingredient in food_list[i+1][3]%}
+                  {%endfor%}
+                  </div>   
+
+                  <!--filter health labels  -->
+                  <h2 style="font-size:15px; margin-top:10px">Allergies</h2>
+                  <div style="font-size:10px;margin-top:10px">
+                  {%for label in food_list[i][3]%}
+                    {{label}},
+                  {%endfor%}                  
+                  </div>
+
+                  <!--calories  -->
+                  <div style="font-size:15px;margin-top:10px">
+                  kcal : {{food_list[i][5]}}
+                  </div>
+                        
+                  <a href = "{{url_for('recipe', food_ingredients = food_list[i][4]|join(', '), food_name = food_list[i][0], image = food_list[i][1])}}" ><button style="background-color:rgba(83, 247, 173);border-width:0px; border-radius:15px;padding-left:20px;padding-bottom:15px;padding-top:15px;padding-right:20px;margin-top:20px">View Recipe</button></a>
+
+                  </form> 
+              </td>
+              <!-- display right -->
+              <td>
+                <div className="card" style="background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+                  <form action="/recipe" method="POST">
+                  <img src="{{food_list[i+1][1]}}" alt="" style="border-radius:10px">
+
+                  <!-- label -->
+                  <div style="font-size:20px;margin-top:10px">
+                    {{food_list[i+1][0]}} 
+                  </div> 
+
+                  <!--ingredients  -->
+                  <div style="font-size:10px;margin-top:10px">
+                  <h2 style="font-size:15px">Ingredients</h2>
+                  {%for ingredient in food_list[i+1][4]%}
                     - {{ingredient}}
                     <br>
-                    {%endfor%}                </div>
-                <!--calories  -->
-                <div style="font-size:10px;margin-top:10px">
-                kcal : {{food_list[i+1][5]}}  
-                </div>
-              </div>
-            </form>
-            <td>
-          </tr>         
-        {%endfor%}
+                  {%endfor%}
+                  </div>   
+
+                  <!--filter health labels  -->
+                  <h2 style="font-size:15px; margin-top:10px">Allergies</h2>
+                  <div style="font-size:10px;margin-top:10px">
+                  {%for label in food_list[i][3]%}
+                    {{label}},
+                  {%endfor%}                  
+                  </div>
+
+                  <!--calories  -->
+                  <div style="font-size:15px;margin-top:10px">
+                  kcal : {{food_list[i+1][5]}}
+                  </div>
+
+                  <a href = "{{url_for('recipe', food_ingredients = food_list[i+1][4]|join(', '), food_name = food_list[i+1][0], image = food_list[i+1][1])}}"><button style="background-color:rgba(83, 247, 173);border-width:0px; border-radius:15px;padding-left:20px;padding-bottom:15px;padding-top:15px;padding-right:20px;margin-top:20px">View Recipe</button></a>
+
+              
+              </td>
+            </tr>         
+          {%endfor%}
+        {%elif food_list|length == 1%}
+            <tr>
+              <td>
+                <div className="card" style="height:cover;text-align:center;margin: 0 auto;background-color:white; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 20px; padding-top:20px;padding-right: 20px; padding-bottom: 20px; margin-left: 20px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; font-family: Short Stack, cursive; font-weight:400; font-style: normal;">
+                  
+                  <img src="{{food_list[0][1]}}" alt="" style="border-radius:10px">
+
+                  <!--ingredients  -->
+                  <div style="font-size:10px;margin-top:10px">
+                  <h2 style="font-size:15px">Ingredients</h2>
+                  {%for ingredient in food_list[0][4]%}
+                  -{{ingredient}}
+                  <br>
+                  {%endfor%}
+                  </div>   
+
+                  <!--filter health labels  -->
+                  <h2 style="font-size:15px; margin-top:10px">Allergies</h2>
+                  <div style="font-size:10px;margin-top:10px">
+                  {%for label in food_list[0][3]%}
+                    {{label}},
+                  {%endfor%}                  
+                  </div>
+
+                  <!--calories  -->
+                  <div style="font-size:15px;margin-top:10px">
+                  kcal : {{food_list[0][5]}}
+                  </div>
+
+                  <a href = "{{url_for('recipe', food_ingredients = food_list[0][4]|join(', '), food_name = food_list[0][0], image = food_list[0][1])}}" ><button style="background-color:rgba(83, 247, 173);border-width:0px; border-radius:15px;padding-left:20px;padding-bottom:15px;padding-top:15px;padding-right:20px;margin-top:20px">View Recipe</button></a>
+
+                  </form> 
+              </td>
+        {%else%}
+              none found
+        {%endif%}
         </table>
       </div>
     </div>

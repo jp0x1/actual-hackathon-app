@@ -16,15 +16,13 @@
     </head>
     <body style="background-color:white; background-image:url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2lzMTYwNjItaW1hZ2Uta3d2eWZrd3IuanBn.jpg');background-size: cover;background-attachment: fixed;">
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light" style="border-bottom: 3px solid;border-color:rgba(83, 247, 173);background-color:rgba(185,185,185,0.9);padding-bottom:5px;padding-top:5px;font-family: Rubik Doodle Shadow; font-weight: 400; font-style: normal;font-size:30">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="border-bottom: 3px solid;border-color:rgba(83, 247, 173);background-color:rgba(86,86,86,0.9);padding-bottom:5px;padding-top:5px;font-family: Rubik Doodle Shadow; font-weight: 400; font-style: normal;font-size:30">
             <div class="container">
-                <a class="navbar-brand" href="/">Recipe M[AI]ker</a>
+                <a class="navbar-brand" href="/" style="color:white;margin-left:-80px">Recipe M[AI]ker</a>
                 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link {{'active' if active_page == 'home'}}" aria-current="page" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link {{'active' if active_page == 'about'}}" aria-current="page" href="/custom">My Own Ingredients</a></li>
-                        <li class="nav-item"><a class="nav-link {{'active' if active_page == 'about'}}" aria-current="page" href="/about">About</a></li>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="text-align:right; margin-right:-80px;margin-top:10px">
+                        <li class="nav-item"><a class="nav-link {{'active' if active_page == 'home'}}" aria-current="page" style="color:white" href="/">Home</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,8 +30,8 @@
         {%block content%}
         {%endblock%}
         <!-- Footer-->
-        <footer class="fixed-bottom" style="border-top: 3px solid;border-color:rgba(83, 247, 173);background-color:rgba(86,86,86,0.9);padding-bottom:5px;padding-top:5px; font-family: Rubik Doodle Shadow; font-weight: 400; font-style: normal;font-size:30">
-            <div class="container"><p class="m-0 text-center text-white">Lazy People - 2024</p></div>
+        <footer class="fixed-bottom" style="color:white;border-top: 3px solid;border-color:rgba(83, 247, 173);background-color:rgba(86,86,86,0.9);padding-bottom:5px;padding-top:5px; font-family: Rubik Doodle Shadow; font-weight: 400; font-style: normal;font-size:30">
+            <div class="container"><p class="m-0 text-center">Lazy People - 2024</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
