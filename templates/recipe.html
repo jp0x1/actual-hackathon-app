@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+{%block title%}Recipe Finder{%endblock%}
+{%set active_page = 'home'%}
+{%block content%}
+<div class="container" style="text-align:center;">
+  <body>
+    <div className="card"  style="background-color:rgba(185,185,185,0.9); border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); padding-left: 100px; padding-top:100px;padding-right: 100px; padding-bottom: 100px; margin-left: 100px; margin-top: 200px; margin-right: 100px; margin-bottom: 200px;">
+      <div>
+        <h1>
+            moneky
+            
+        </h1>
+        {%for food in food_list%}
+           <img src="{{food[1]}}" alt="">
+           {%endfor%}
+      </div>
+
+        <div>
+           
+        </div>
+    </div>
+  </body>
+</div> 
+{%endblock%}
