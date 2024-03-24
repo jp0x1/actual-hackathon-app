@@ -1,7 +1,7 @@
 from openai import OpenAI
 import openai
 #setting up the openai key to use chatgpt
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='')
 
 #can use both with provided ingredients and generated ingredients
 
